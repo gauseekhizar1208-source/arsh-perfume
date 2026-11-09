@@ -170,23 +170,12 @@
 .collection-tile:only-child .collection-sculpture { position:absolute; width:350px; height:200px; right:10%; top:25px; transform:scale(1.2); }
 .collection-tile:only-child h3 { margin-top:105px; font-size:45px; }
 .collection-tile:only-child .collection-meta { max-width:40%; }
-.home-product-grid:has(>.product-card:only-child) { grid-template-columns:1fr; }
-.storefront .home-product-grid>.product-card:only-child { display:grid; grid-template-columns:1fr 1fr; }
-.storefront .home-product-grid>.product-card:only-child .product-image { border-right:1px solid #493d2c; border-bottom:0; border-radius:10px 0 0 10px; }
-.storefront .home-product-grid>.product-card:only-child .product-info { padding:45px; justify-content:center; gap:18px; }
-.storefront .home-product-grid>.product-card:only-child .product-info>div { margin-top:10px; align-items:center; }
-.storefront .home-product-grid>.product-card:only-child .product-info h3 { font-size:52px; }
-.storefront .home-product-grid>.product-card:only-child .product-info>p:nth-of-type(2) { font-size:13px; line-height:1.9; max-width:350px; }
-.storefront .home-product-grid>.product-card:only-child .product-info>div>div>p:first-child { font-size:22px; }
+/* A lone product shows as a normal, capped-width card (centred), not a giant banner. */
+.home-product-grid:has(>.product-card:only-child) { grid-template-columns:minmax(0,300px); justify-content:center; }
 @media(max-width:767px) {
  .collection-tile:only-child { min-height:235px; }
  .collection-tile:only-child .collection-sculpture { right:-12%; top:25px; width:250px; transform:scale(.85); }
  .collection-tile:only-child h3 { margin-top:95px; font-size:35px; }
  .collection-tile:only-child .collection-meta { max-width:52%; }
- .storefront .home-product-grid>.product-card:only-child { grid-template-columns:1fr; }
- .storefront .home-product-grid>.product-card:only-child .product-image { border-radius:10px 10px 0 0; border-right:0; border-bottom:1px solid #493d2c; }
- .storefront .home-product-grid>.product-card:only-child .product-info { padding:25px; gap:10px; }
- .storefront .home-product-grid>.product-card:only-child .product-info h3 { font-size:38px; }
- .storefront .home-product-grid>.product-card:only-child .product-info>div { flex-wrap:nowrap; }
- .storefront .home-product-grid>.product-card:only-child .btn-sm { width:auto; }
+ .home-product-grid:has(>.product-card:only-child) { grid-template-columns:minmax(0,280px); }
 }
