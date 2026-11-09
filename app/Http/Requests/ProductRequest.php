@@ -60,8 +60,13 @@ class ProductRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        if ($this->filled('slug')) {
-            $this->merge(['slug' => strtolower((string) $this->input('slug'))]);
+        // Derive the slug from the name when left blank, so the unique rule
+        // catches duplicates instead of the database throwing a 500.
+        $slug = $this->filled('slug')
+            ? $this->input('slug')
+            : \Illuminate\Support\Str::slug((string) $this->input('name'));
+        if ($slug !== '' && $slug !== null) {
+            $this->merge(['slug' => strtolower((string) $slug)]);
         }
         $variants = collect($this->input('variants', []))->map(function ($v) {
             $v['is_active'] = filter_var($v['is_active'] ?? true, FILTER_VALIDATE_BOOLEAN);
