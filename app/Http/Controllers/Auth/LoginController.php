@@ -40,7 +40,7 @@ class LoginController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        return redirect()->intended(route('account'));
+        return redirect()->intended(route('home'));
     }
 
     public function destroy(Request $request): RedirectResponse

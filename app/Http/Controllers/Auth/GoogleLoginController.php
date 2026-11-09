@@ -86,6 +86,6 @@ class GoogleLoginController extends Controller
         $user->forceFill(['last_login_at' => now()])->save();
         $cart->mergeGuestCartInto($user);
 
-        return $user->isAdmin() ? redirect()->route('admin.dashboard') : redirect()->intended(route('account'));
+        return $user->isAdmin() ? redirect()->route('admin.dashboard') : redirect()->intended(route('home'));
     }
 }

@@ -46,6 +46,6 @@ class RegisterController extends Controller
         $request->session()->regenerate();
         $cart->mergeGuestCartInto($user);
 
-        return redirect()->route('account')->with('status', 'Welcome to Arsh Perfume!');
+        return redirect()->route('home')->with('status', 'Welcome to Arsh Perfume!');
     }
 }
