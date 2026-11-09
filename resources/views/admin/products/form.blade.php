@@ -127,7 +127,7 @@
             <div><label class="label" for="status">Status</label>
                 <select id="status" name="status" class="input">
                     @foreach(['draft' => 'Draft (hidden)', 'active' => 'Active (on sale)', 'archived' => 'Archived'] as $val => $label)
-                        <option value="{{ $val }}" @selected(old('status', $product->status ?: 'draft') === $val)>{{ $label }}</option>
+                        <option value="{{ $val }}" @selected(old('status', $product->status ?: 'active') === $val)>{{ $label }}</option>
                     @endforeach
                 </select></div>
             <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="is_featured" value="1" class="accent-[#C8A24D]" @checked($product->is_featured)> Featured on homepage</label>
