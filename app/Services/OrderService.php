@@ -223,7 +223,7 @@ class OrderService
     protected function generateOrderNumber(): string
     {
         do {
-            $number = 'AP'.now()->format('ymd').random_int(10000, 99999);
+            $number = 'AP'.now()->format('ymd').strtoupper(Str::random(6));
         } while (Order::query()->where('order_number', $number)->exists());
 
         return $number;
