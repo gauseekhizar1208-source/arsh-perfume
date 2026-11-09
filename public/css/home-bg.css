@@ -1,0 +1,43 @@
+/* ============================================================
+   Arsh Perfume - homepage hero banner (black, peach button)
+   Loaded ONLY on the home page. Picture: public/images/brand/hero-mist.jpg
+   No npm build needed: save the file and refresh the browser.
+   ============================================================ */
+
+.hero-lux {
+    background-color: #000;
+    background-image:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.5) 42%, rgba(0, 0, 0, 0) 78%),
+        url("../images/brand/hero-mist.jpg");
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
+/* Big serif capitals like the reference hero */
+.hero-lux h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: none;
+}
+.hero-lux .hero-eyebrow { color: #E8B4A0; font-weight: 700; }
+.hero-lux .hero-sub { color: rgba(255, 255, 255, 0.9); font-size: 1.125rem; }
+
+/* Peach pill button + white outline pill */
+.hero-lux .btn-gold { background: #E8B4A0; border-color: #E8B4A0; color: #000; }
+.hero-lux .btn-gold:hover { background: #fff; border-color: #fff; color: #000; }
+.hero-lux .btn-outline { background: transparent; border-color: rgba(255, 255, 255, 0.8); color: #fff; }
+.hero-lux .btn-outline:hover { background: #fff; border-color: #fff; color: #000; }
+
+@media (max-width: 767px) {
+    .hero-lux {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66)),
+            url("../images/brand/hero-mist.jpg");
+        background-position: 70% center;
+    }
+}

@@ -1,0 +1,348 @@
+ @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap");
+  @import "tailwindcss";
+  @import "./storefront.css";
+  @import "./admin.css";
+  @import "./upi.css";
+  @import "./auth.css";
+  @import "./service-pages.css";
+
+  @source "../views/**/*.blade.php";
+  @source "../js/**/*.js";
+
+  /* ============================================================
+     ARSH PERFUME - Ultra-Modern Luxury Redesign 2026
+     Design Philosophy: Opulent Minimalism with Bold Gradients
+
+     Inspired by: Chanel, Dior, Tom Ford luxury aesthetics
+     Style: Dark Luxury + Gradient Accents + Premium Materials
+     Color Story: Deep Midnight + Rose Gold + Champagne
+     Typography: Playfair Display (Elegant Serif) + Lato (Clean Sans)
+
+     Features:
+     - Immersive gradient backgrounds
+     - Floating glass elements
+     - Cinematic animations
+     - Premium metallic accents
+     - Sophisticated depth layers
+     ============================================================ */
+
+  @theme {
+      /* Premium Typography */
+      --font-display: "Playfair Display", Georgia, serif;
+      --font-sans: "Lato", -apple-system, system-ui, sans-serif;
+
+      /* Luxury Color Palette - Dark & Sophisticated */
+      --color-midnight: #0A0612;        /* Deep midnight background */
+      --color-void: #1A0F2E;            /* Rich void panel */
+      --color-plum: #2D1B47;            /* Plum card background */
+      --color-ivory: #FFF8F0;           /* Warm ivory text */
+      --color-champagne: #F4E4D7;       /* Champagne cream */
+      --color-rose-gold: #E8B4A0;       /* Rose gold primary */
+      --color-rose-bright: #FFB8A3;     /* Bright rose */
+      --color-rose-deep: #C4887A;       /* Deep rose */
+      --color-copper: #D4A574;          /* Copper accent */
+      --color-muted: #B8A89D;           /* Muted taupe */
+      --color-border: #3D2755;          /* Soft border */
+      --color-danger: #FF4458;
+      --color-success: #00D9A3;
+
+      /* Legacy color mappings for compatibility */
+      --color-ink: #0A0612;
+      --color-panel: #1A0F2E;
+      --color-card: #2D1B47;
+      --color-white: #FFF8F0;
+      --color-cream: #F4E4D7;
+      --color-gold: #E8B4A0;
+      --color-gold-soft: #FFB8A3;
+      --color-gold-deep: #C4887A;
+      --color-line: #3D2755;
+      --color-ok: #00D9A3;
+
+      /* Gradient Definitions */
+      --gradient-hero: linear-gradient(135deg, #0A0612 0%, #1A0F2E 50%, #2D1B47 100%);
+      --gradient-rose: linear-gradient(135deg, #C4887A 0%, #E8B4A0 50%, #FFB8A3 100%);
+      --gradient-gold: linear-gradient(135deg, #C4887A 0%, #D4A574 100%);
+      --gradient-overlay: linear-gradient(180deg, rgba(10, 6, 18, 0) 0%, rgba(10, 6, 18, 0.8) 100%);
+      --gradient-shimmer: linear-gradient(90deg, transparent 0%, rgba(255, 184, 163, 0.4) 50%, transparent 100%);
+
+      /* Glass & Frosted Effects */
+      --glass-bg: rgba(45, 27, 71, 0.4);
+      --glass-border: rgba(232, 180, 160, 0.15);
+      --glass-blur: 20px;
+
+      /* Luxury Shadows & Glows */
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.7);
+      --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.8);
+      --shadow-rose: 0 8px 32px rgba(232, 180, 160, 0.4);
+      --shadow-rose-lg: 0 16px 48px rgba(232, 180, 160, 0.6);
+      --shadow-gold: 0 8px 32px rgba(232, 180, 160, 0.4);
+
+      /* Glows & Highlights */
+      --glow-rose: 0 0 24px rgba(232, 180, 160, 0.5);
+      --glow-text: 0 2px 12px rgba(232, 180, 160, 0.3);
+      --glow-strong: 0 0 40px rgba(255, 184, 163, 0.6);
+      --glow-gold: 0 0 24px rgba(232, 180, 160, 0.5);
+  }
+
+  /* ========== BASE STYLES ========== */
+  @layer base {
+      html {
+          color-scheme: dark;
+          scroll-behavior: smooth;
+      }
+
+      body {
+          background: var(--color-midnight);
+          color: var(--color-ivory);
+          font-family: var(--font-sans);
+          font-weight: 300;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          position: relative;
+      }
+
+      body::before {
+          content: '';
+          position: fixed;
+          inset: 0;
+          background:
+              radial-gradient(circle at 20% 30%, rgba(232, 180, 160, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(196, 136, 122, 0.06) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(45, 27, 71, 0.5) 0%, transparent 100%);
+          pointer-events: none;
+          z-index: 0;
+          animation: breathe 15s ease-in-out infinite;
+      }
+
+      @keyframes breathe {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.6; }
+      }
+
+      h1, h2, h3, h4, h5, h6, .font-display {
+          font-family: var(--font-display);
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          color: var(--color-rose-gold);
+          line-height: 1.2;
+      }
+
+      a {
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      ::selection {
+          background: var(--color-rose-gold);
+          color: var(--color-midnight);
+      }
+
+      [x-cloak] {
+          display: none !important;
+      }
+
+      :focus-visible {
+          outline: 2px solid var(--color-rose-gold);
+          outline-offset: 3px;
+      }
+
+      ::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+          background: var(--color-void);
+      }
+
+      ::-webkit-scrollbar-thumb {
+          background: var(--gradient-rose);
+          border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+          background: var(--gradient-gold);
+      }
+  }
+
+  /* ========== COMPONENTS ========== */
+  @layer components {
+      .container-x {
+          max-width: 84rem;
+          margin: 0 auto;
+          padding: 0 1.25rem;
+          width: 100%;
+          position: relative;
+          z-index: 1;
+      }
+
+      @media (min-width: 1024px) {
+          .container-x {
+              padding: 0 2.5rem;
+          }
+      }
+
+      .glass-card {
+          background: var(--glass-bg);
+          backdrop-filter: blur(var(--glass-blur));
+          -webkit-backdrop-filter: blur(var(--glass-blur));
+          border: 1px solid var(--glass-border);
+          border-radius: 24px;
+          box-shadow: var(--shadow-md);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .glass-card-hover {
+          background: var(--glass-bg);
+          backdrop-filter: blur(var(--glass-blur));
+          -webkit-backdrop-filter: blur(var(--glass-blur));
+          border: 1px solid var(--glass-border);
+          border-radius: 24px;
+          box-shadow: var(--shadow-md);
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .glass-card-hover:hover {
+          transform: translateY(-8px) scale(1.02);
+          border-color: var(--color-rose-gold);
+          box-shadow: var(--shadow-xl), var(--shadow-rose-lg);
+      }
+
+      .btn, .btn-gold, .btn-outline, .btn-ghost, .btn-danger, .btn-peach, .btn-order {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.625rem;
+          padding: 1rem 2.5rem;
+          border: 1px solid transparent;
+          border-radius: 16px;
+          font-size: 0.875rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+          font-family: var(--font-sans);
+      }
+
+      .btn-gold {
+          background: var(--gradient-rose);
+          color: var(--color-midnight);
+          box-shadow: var(--shadow-md), var(--shadow-rose);
+      }
+
+      .btn-gold:hover {
+          transform: translateY(-3px);
+          box-shadow: var(--shadow-lg), var(--shadow-rose-lg), var(--glow-rose);
+      }
+
+      .btn-outline {
+          border: 2px solid var(--color-rose-gold);
+          color: var(--color-rose-gold);
+          background: transparent;
+      }
+
+      .btn-outline:hover {
+          background: var(--gradient-rose);
+          color: var(--color-midnight);
+          transform: translateY(-3px);
+          box-shadow: var(--shadow-md), var(--shadow-rose);
+          border-color: transparent;
+      }
+
+      .btn-ghost {
+          border-color: var(--color-border);
+          color: var(--color-champagne);
+          background: rgba(45, 27, 71, 0.3);
+      }
+
+      .btn-ghost:hover {
+          border-color: var(--color-rose-gold);
+          color: var(--color-rose-gold);
+      }
+
+      .btn-sm {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.8125rem;
+      }
+
+      .input {
+          width: 100%;
+          padding: 1rem 1.25rem;
+          background: rgba(45, 27, 71, 0.3);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid var(--color-border);
+          border-radius: 16px;
+          color: var(--color-ivory);
+          font-size: 1rem;
+          transition: all 0.4s;
+      }
+
+      .input:focus {
+          outline: none;
+          border-color: var(--color-rose-gold);
+          background: rgba(45, 27, 71, 0.6);
+          box-shadow: 0 0 0 4px rgba(232, 180, 160, 0.15), var(--glow-rose);
+      }
+
+      .card, .card-hover {
+          background: var(--color-plum);
+          border: 1px solid var(--color-border);
+          border-radius: 24px;
+          box-shadow: var(--shadow-sm);
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card-hover:hover {
+          transform: translateY(-8px);
+          border-color: var(--color-rose-gold);
+          box-shadow: var(--shadow-xl), var(--shadow-rose-lg);
+      }
+
+      .section-title {
+          font-size: clamp(2rem, 4vw, 3.5rem);
+          font-weight: 600;
+          background: var(--gradient-rose);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+
+      .gold-rule {
+          display: block;
+          width: 6rem;
+          height: 3px;
+          margin: 1.5rem auto 0;
+          background: var(--gradient-rose);
+          border-radius: 2px;
+          box-shadow: var(--glow-rose);
+      }
+
+      .to-top {
+          position: fixed;
+          right: 2rem;
+          bottom: 2rem;
+          z-index: 50;
+          display: inline-flex;
+          height: 3.75rem;
+          width: 3.75rem;
+          align-items: center;
+          justify-content: center;
+          border-radius: 20px;
+          background: var(--gradient-rose);
+          color: var(--color-midnight);
+          box-shadow: var(--shadow-lg), var(--shadow-rose-lg);
+          transition: all 0.4s;
+      }
+
+      .to-top:hover {
+          transform: translateY(-6px) scale(1.05);
+          box-shadow: var(--shadow-xl), var(--glow-strong);
+      }
+  }

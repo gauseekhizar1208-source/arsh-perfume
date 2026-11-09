@@ -1,0 +1,14 @@
+/node_modules
+/vendor
+/tests
+/storage/logs/*
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+.phpunit.result.cache
+.env
+.env.*
+!.env.example
+/.git
+/docs
+/design-system

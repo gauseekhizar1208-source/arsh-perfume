@@ -1,0 +1,65 @@
+/* ============================================================
+   Arsh Perfume - homepage hero banner
+   Loaded ONLY on the home page (see resources/views/layouts/app.blade.php).
+   The picture is public/images/brand/hero-mist.jpg (dark, golden mist and rose petals).
+   No npm build needed: save the file and refresh the browser.
+   To change the picture later, just replace hero-mist.jpg with another dark photo.
+   ============================================================ */
+
+.hero-lux {
+    background-color: #0a0706;
+    background-image:
+        linear-gradient(90deg, rgba(8, 6, 5, 0.78) 0%, rgba(8, 6, 5, 0.42) 42%, rgba(8, 6, 5, 0) 75%),
+        url("../images/brand/hero-mist.jpg");
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+/* Text on the dark banner (works on any site theme) */
+.hero-lux h1 {
+    color: #ffffff;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45);
+}
+
+.hero-lux .hero-eyebrow {
+    color: #e3c57f;
+}
+
+.hero-lux .hero-sub {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+/* Buttons on the dark banner */
+.hero-lux .btn-gold {
+    background: #e3c57f;
+    border-color: #e3c57f;
+    color: #14110d;
+}
+.hero-lux .btn-gold:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #14110d;
+}
+
+.hero-lux .btn-outline {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.75);
+    color: #ffffff;
+}
+.hero-lux .btn-outline:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #14110d;
+}
+
+/* Phones: darker overlay all over, so the text stays easy to read */
+@media (max-width: 767px) {
+    .hero-lux {
+        background-image:
+            linear-gradient(rgba(8, 6, 5, 0.62), rgba(8, 6, 5, 0.62)),
+            url("../images/brand/hero-mist.jpg");
+        background-position: 70% center;
+    }
+}

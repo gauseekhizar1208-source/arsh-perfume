@@ -1,0 +1,27 @@
+@props(['name' => 'grid'])
+@php($paths = [
+    'grid' => 'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',
+    'bag' => 'M5 7h14l1 14H4L5 7z M9 8V6a3 3 0 0 1 6 0v2',
+    'bottle' => 'M9 3h6v4H9z M9 7v3l-3 3v8h12v-8l-3-3V7 M9 16h6',
+    'layers' => 'm12 3 9 5-9 5-9-5 9-5z M3 12l9 5 9-5 M3 16l9 5 9-5',
+    'box' => 'm12 3 9 5v9l-9 5-9-5V8l9-5z M3 8l9 5 9-5 M12 13v9 M8 5l9 5',
+    'users' => 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
+    'tag' => 'M3 3h8l10 10-8 8L3 11V3z M7 7h.01',
+    'star' => 'm12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3z',
+    'message' => 'M21 15a3 3 0 0 1-3 3H8l-5 3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9z M7 8h10 M7 12h7',
+    'mail' => 'M3 5h18v14H3z m0 0 9 7 9-7',
+    'image' => 'M3 3h18v18H3z m0 14 5-5 4 4 4-6 5 7 M8 7h.01',
+    'file' => 'M14 2H5v20h14V7l-5-5z M14 2v5h5 M8 12h8 M8 16h8',
+    'help' => 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20 M9 9a3 3 0 1 1 5 2c-2 1-2 2-2 3 M12 17h.01',
+    'chart' => 'M3 3v18h18 M7 15l4-4 4 2 6-7',
+    'settings' => 'M4 6h16 M4 12h16 M4 18h16 M8 3v6 M16 9v6 M10 15v6',
+    'activity' => 'M2 12h5l3-8 4 16 3-8h5',
+    'arrow' => 'M7 17 17 7 M7 7h10v10',
+    'plus' => 'M12 5v14 M5 12h14',
+    'close' => 'm6 6 12 12 M6 18 18 6',
+    'menu' => 'M4 6h16 M4 12h16 M4 18h16',
+    'logout' => 'M9 3H3v18h6 M14 8l5 4-5 4 M7 12h12',
+    'clock' => 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20 M12 6v6l4 2',
+    'check' => 'm5 12 4 4L19 6',
+])
+<svg {{ $attributes->merge(['class' => 'admin-icon']) }} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ $paths[$name] ?? $paths['grid'] }}"/></svg>
