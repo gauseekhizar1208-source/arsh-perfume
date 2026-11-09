@@ -19,6 +19,7 @@ class InventoryController extends Controller
         $filter = $request->validate(['stock' => ['nullable', 'in:low,out,all']])['stock'] ?? 'all';
 
         $variants = ProductVariant::query()->with('product:id,name,sku,status')
+            ->whereHas('product')
             ->when($filter === 'low', fn ($q) => $q->where('stock', '>', 0)->whereColumn('stock', '<=', 'low_stock_threshold'))
             ->when($filter === 'out', fn ($q) => $q->where('stock', '<=', 0))
             ->orderBy('stock')->paginate(25)->withQueryString();
