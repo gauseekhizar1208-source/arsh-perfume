@@ -8,7 +8,6 @@
         @csrf
         <h1 class="section-title text-center">Sign in</h1>
         <x-google-sign-in />
-        @if(session('status'))<p class="alert-ok">{{ session('status') }}</p>@endif
         <div>
             <label class="label" for="email">Email</label>
             <input id="email" name="email" type="email" class="input @error('email') input-error @enderror" value="{{ old('email') }}" required autofocus autocomplete="email" @error('email') aria-describedby="email-err" @enderror>
