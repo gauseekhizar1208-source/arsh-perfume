@@ -122,7 +122,8 @@ class ProductController extends Controller
 
         $product->images()->get()->each(fn ($img) => Storage::disk(config('arsh.media_disk'))->delete($img->path));
         ActivityLogger::log('product.deleted', null, "Deleted product {$product->name}", ['sku' => $product->sku]);
-        $product->delete();
+        // Permanently remove (no order history), so its SKU/slug are freed for reuse.
+        $product->forceDelete();
 
         return redirect()->route('admin.products.index')->with('status', 'Product deleted.');
     }
