@@ -33,6 +33,13 @@
 @if($primary) @section('og_image', $primary) @endif
 
 @push('head')
+    @php
+        $crumbs = [['Home', route('home')], ['Shop', route('shop')]];
+        if ($product->category) { $crumbs[] = [$product->category->name, route('collections.show', $product->category)]; }
+        $crumbs[] = [$product->name, route('product.show', $product)];
+        $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => collect($crumbs)->values()->map(fn ($c, $i) => ['@type' => 'ListItem', 'position' => $i + 1, 'name' => $c[0], 'item' => $c[1]])->all()];
+    @endphp
+    <script type="application/ld+json">{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
     <script type="application/ld+json">{!! json_encode($structured, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
 @endpush
 

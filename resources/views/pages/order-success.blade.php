@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('robots', 'noindex, nofollow')
 
 @section('title', 'Order Placed | Arsh Perfume')
 

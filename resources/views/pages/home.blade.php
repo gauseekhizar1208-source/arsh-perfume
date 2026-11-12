@@ -1,5 +1,38 @@
 @extends('layouts.app')
-@section('title', 'Arsh Perfume | A Scent to Remember')
+@section('title', 'Arsh Perfume | Premium Attars, Roll-On Perfumes & Fragrance Oils')
+@section('meta_description', 'Shop premium attars, roll-on perfumes and fragrance oils from Arsh Perfume. Long-lasting scents, secure checkout and delivery across India.')
+@push('head')
+@php
+    $orgSchema = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            array_filter([
+                '@type' => 'Organization',
+                '@id' => url('/').'#organization',
+                'name' => setting('business_name', 'Arsh Perfume'),
+                'url' => url('/'),
+                'logo' => asset('images/brand/arsh-logo.jpg'),
+                'email' => setting('contact_email') ?: null,
+                'telephone' => setting('contact_phone') ?: null,
+                'sameAs' => array_values(array_filter([setting('social_instagram'), setting('social_facebook'), setting('social_youtube')], fn ($u) => is_string($u) && str_starts_with($u, 'http'))) ?: null,
+            ]),
+            [
+                '@type' => 'WebSite',
+                '@id' => url('/').'#website',
+                'name' => setting('business_name', 'Arsh Perfume'),
+                'url' => url('/'),
+                'publisher' => ['@id' => url('/').'#organization'],
+                'potentialAction' => [
+                    '@type' => 'SearchAction',
+                    'target' => ['@type' => 'EntryPoint', 'urlTemplate' => route('shop').'?q={search_term_string}'],
+                    'query-input' => 'required name=search_term_string',
+                ],
+            ],
+        ],
+    ];
+@endphp
+    <script type="application/ld+json">{!! json_encode($orgSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endpush
 @section('content')
 <section class="atelier-hero" aria-labelledby="hero-title">
     <div class="container-x hero-grid">

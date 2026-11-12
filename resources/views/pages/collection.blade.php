@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('title', $category->name.' | Arsh Perfume')
-@section('meta_description', $category->description ?: 'Explore '.$category->name.' from Arsh Perfume.')
+@section('meta_description', Str::limit(strip_tags((string) ($category->description ?: 'Explore '.$category->name.' from Arsh Perfume — premium attars, roll-on perfumes and fragrance oils.')), 155))
+@if($category->image_path) @section('og_image', $category->image_url) @endif
+@push('head')
+    <script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Collections', 'item' => route('collections.index')],
+        ['@type' => 'ListItem', 'position' => 3, 'name' => $category->name, 'item' => route('collections.show', $category)],
+    ]], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endpush
 
 @section('content')
 <div class="container-x py-12">

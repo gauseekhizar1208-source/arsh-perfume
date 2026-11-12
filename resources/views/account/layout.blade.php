@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('robots', 'noindex, nofollow')
 
 @section('content')
 <div class="container-x grid gap-10 py-12 lg:grid-cols-[220px_1fr]">

@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('title', 'Frequently Asked Questions | Arsh Perfume')
+@section('meta_description', 'Answers about Arsh Perfume attars and perfumes: ordering, payment, shipping, returns and how to make your fragrance last longer.')
+@if($faqs->isNotEmpty())
+@push('head')
+    <script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $faqs->map(fn ($f) => ['@type' => 'Question', 'name' => $f->question, 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f->answer]])->values()->all()], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endpush
+@endif
 
 @section('content')
 <div class="container-x service-page">

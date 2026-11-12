@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('robots', 'noindex, nofollow')
 @section('title', 'Pay by UPI QR | Arsh Perfume')
 @section('content')
 <div class="container-x upi-page">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Contact Us | Arsh Perfume')
+@section('meta_description', 'Get in touch with Arsh Perfume for orders, fragrance advice, bulk enquiries or help with delivery.')
 
 @section('content')
 <div class="container-x service-page">

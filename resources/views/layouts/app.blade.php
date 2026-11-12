@@ -4,18 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', setting('business_name', 'Arsh Perfume').' | '.setting('tagline'))</title>
-    <meta name="description" content="@yield('meta_description', 'Premium attars, roll-on perfumes and fragrance oils from Arsh Perfume. Feel the best quality.')">
+    @php
+        $seoSite = setting('business_name', 'Arsh Perfume');
+        $seoTitle = trim($__env->yieldContent('title')) ?: $seoSite.' | '.setting('tagline');
+        $seoDesc = trim($__env->yieldContent('meta_description')) ?: 'Premium attars, roll-on perfumes and fragrance oils from Arsh Perfume. Feel the best quality.';
+        $seoImage = trim($__env->yieldContent('og_image')) ?: asset('images/brand/arsh.jpg');
+    @endphp
+    <title>{{ $seoTitle }}</title>
+    <meta name="description" content="{{ $seoDesc }}">
+    <meta name="robots" content="@yield('robots', 'index, follow, max-image-preview:large')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
-    <meta property="og:site_name" content="{{ setting('business_name', 'Arsh Perfume') }}">
+    <meta property="og:site_name" content="{{ $seoSite }}">
+    <meta property="og:locale" content="en_IN">
     <meta property="og:type" content="@yield('og_type', 'website')">
-    <meta property="og:title" content="@yield('title', 'Arsh Perfume')">
-    <meta property="og:description" content="@yield('meta_description', 'Premium attars and perfumes.')">
-    <meta property="og:url" content="{{ url()->current() }}">
-    @hasSection('og_image')
-        <meta property="og:image" content="@yield('og_image')">
-    @endif
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $seoDesc }}">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:image" content="{{ $seoImage }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $seoDesc }}">
+    <meta name="twitter:image" content="{{ $seoImage }}">
+    <meta name="theme-color" content="#0A0612">
     <link rel="icon" href="{{ asset('images/brand/arsh-logo.jpg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/brand/arsh-logo.jpg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">

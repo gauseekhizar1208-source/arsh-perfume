@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Collections | Arsh Perfume')
+@section('title', 'Perfume & Attar Collections | Arsh Perfume')
+@section('meta_description', 'Browse Arsh Perfume collections: attars, roll-on perfumes and fragrance oils, grouped by family so you can find your signature scent.')
 
 @section('content')
 <div class="container-x py-12">
