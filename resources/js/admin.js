@@ -1,6 +1,43 @@
 import Chart from 'chart.js/auto';
 window.Chart = Chart;
 
+function initAdminNavigation() {
+    const nav = document.querySelector('.admin-nav');
+    if (!nav) return;
+
+    const storageKey = 'arsh.admin.navigation.scroll';
+    const savePosition = () => {
+        if (!nav.clientHeight) return;
+        try { sessionStorage.setItem(storageKey, String(nav.scrollTop)); } catch { /* Storage may be disabled. */ }
+    };
+    const restorePosition = () => {
+        // Alpine hides the mobile drawer until it opens. Restore only once it
+        // has dimensions, otherwise the browser clamps its scroll position to 0.
+        if (!nav.clientHeight) return;
+        try {
+            const saved = Number(sessionStorage.getItem(storageKey));
+            if (Number.isFinite(saved) && saved >= 0) nav.scrollTop = saved;
+        } catch { /* Navigation also works without browser storage. */ }
+
+        const active = nav.querySelector('[aria-current="page"]');
+        if (active) {
+            const bounds = nav.getBoundingClientRect();
+            const item = active.getBoundingClientRect();
+            if (item.top < bounds.top) nav.scrollTop -= bounds.top - item.top;
+            else if (item.bottom > bounds.bottom) nav.scrollTop += item.bottom - bounds.bottom;
+        }
+        savePosition();
+    };
+
+    // Run after Alpine applies its initial drawer visibility.
+    requestAnimationFrame(restorePosition);
+    new ResizeObserver(restorePosition).observe(nav);
+    nav.addEventListener('scroll', savePosition, { passive: true });
+    nav.addEventListener('click', savePosition);
+    window.addEventListener('pagehide', savePosition);
+    window.addEventListener('pageshow', restorePosition);
+}
+
 function initAdminChart() {
     const canvas = document.getElementById('salesChart');
     if (!canvas) return;
@@ -53,5 +90,9 @@ function initAdminChart() {
     });
     reduced.addEventListener('change', () => { chart.options.animation = reduced.matches ? false : { duration: 700 }; chart.stop(); chart.update('none'); });
 }
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAdminChart, { once: true });
-else initAdminChart();
+function initAdmin() {
+    initAdminNavigation();
+    initAdminChart();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAdmin, { once: true });
+else initAdmin();
