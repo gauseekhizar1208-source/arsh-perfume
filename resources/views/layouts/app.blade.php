@@ -26,8 +26,7 @@
     <meta name="twitter:description" content="{{ $seoDesc }}">
     <meta name="twitter:image" content="{{ $seoImage }}">
     <meta name="theme-color" content="#100f0d">
-    <link rel="icon" type="image/jpeg" href="{{ asset('images/brand/arsh-flower.jpeg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/brand/arsh-flower.jpeg') }}">
+    <x-site-icons />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
