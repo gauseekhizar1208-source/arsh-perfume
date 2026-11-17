@@ -25,9 +25,9 @@
     <meta name="twitter:title" content="{{ $seoTitle }}">
     <meta name="twitter:description" content="{{ $seoDesc }}">
     <meta name="twitter:image" content="{{ $seoImage }}">
-    <meta name="theme-color" content="#0A0612">
-    <link rel="icon" href="{{ asset('images/brand/arsh-logo.jpg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/brand/arsh-logo.jpg') }}">
+    <meta name="theme-color" content="#100f0d">
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/brand/arsh-flower.jpeg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/brand/arsh-flower.jpeg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,8 +41,7 @@
 <header class="store-header sticky top-0 z-40 border-b border-line" x-data="{ open: false }" @keydown.escape.window="open = false">
     <div class="container-x flex h-20 items-center justify-between gap-6">
         <a href="{{ route('home') }}" class="flex items-center gap-3" aria-label="{{ setting('business_name') }} home">
-            <img src="{{ asset('images/brand/arsh-logo.jpg') }}" alt="" class="logo-blend h-10 w-auto" width="60" height="40">
-            <span class="brand-wordmark">ARSH<span>THE FRAGRANCE HOUSE</span></span>
+            <x-brand-logo />
         </a>
 
         <nav class="hidden items-center gap-7 text-sm uppercase tracking-widest text-muted lg:flex" aria-label="Main">
@@ -114,7 +113,7 @@
 <footer class="store-footer mt-24 border-t border-line bg-panel">
     <div class="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-            <p class="font-display text-xl tracking-[0.2em]">ARSH PERFUME</p>
+            <a href="{{ route('home') }}" aria-label="Arsh Perfume home"><x-brand-logo /></a>
             <p class="mt-3 text-sm text-muted">{{ setting('tagline') }}</p>
             @if(setting('social_instagram') || setting('social_facebook') || setting('social_youtube'))
                 <ul class="mt-5 flex gap-4 text-sm text-muted">

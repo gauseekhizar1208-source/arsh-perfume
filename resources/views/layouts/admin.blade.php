@@ -6,6 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin') | Arsh Perfume Admin</title>
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/brand/arsh-flower.jpeg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
 <div class="admin-shell">
     <div x-cloak x-show="nav && !desktop" class="admin-backdrop" @click="toggleNav()" aria-hidden="true"></div>
     <aside id="admin-sidebar" x-cloak x-show="nav || desktop" class="admin-sidebar" :role="desktop ? 'complementary' : 'dialog'" :aria-modal="!desktop && nav ? 'true' : null" aria-label="Admin navigation" @keydown.tab="if(!desktop) { const elements = Array.from($el.querySelectorAll('a[href],button:not([disabled])')).filter(el => el.getClientRects().length); const first = elements[0]; const last = elements[elements.length - 1]; if($event.shiftKey && document.activeElement === first) { $event.preventDefault(); last.focus(); } else if(!$event.shiftKey && document.activeElement === last) { $event.preventDefault(); first.focus(); } }">
-        <div class="admin-brand-row"><a href="{{ route('admin.dashboard') }}" class="brand-wordmark" aria-label="Arsh admin overview">ARSH<span>THE FRAGRANCE HOUSE</span></a><button type="button" class="admin-icon-button lg:hidden" x-ref="sideClose" @click="toggleNav()" aria-label="Close navigation"><x-admin-icon name="close" /></button></div>
+        <div class="admin-brand-row"><a href="{{ route('admin.dashboard') }}" aria-label="Arsh admin overview"><x-brand-logo /></a><button type="button" class="admin-icon-button lg:hidden" x-ref="sideClose" @click="toggleNav()" aria-label="Close navigation"><x-admin-icon name="close" /></button></div>
         <div class="admin-workspace"><span class="workspace-monogram">A</span><div><strong>Arsh workspace</strong><span>Store administration</span></div><span class="workspace-dot" aria-label="Admin workspace"></span></div>
         @php($groups = [
             'WORKSPACE' => [

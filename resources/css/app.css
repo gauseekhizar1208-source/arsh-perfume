@@ -6,6 +6,7 @@
   @import "./auth.css";
   @import "./service-pages.css";
   @import "./responsive.css";
+  @import "./brand.css";
 
   @source "../views/**/*.blade.php";
   @source "../js/**/*.js";

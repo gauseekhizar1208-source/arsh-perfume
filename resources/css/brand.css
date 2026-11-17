@@ -1,0 +1,30 @@
+/* The supplied monochrome flower becomes a gold mark through a luminance mask. */
+.brand-lockup { display:inline-flex; align-items:center; gap:12px; flex-shrink:0; }
+.brand-symbol {
+    display:block; width:48px; height:48px; flex-shrink:0;
+    background:linear-gradient(135deg,var(--color-gold-soft) 10%,var(--color-gold) 52%,#a77d43 100%);
+    mask-image:url('../../public/images/brand/arsh-flower.jpeg');
+    mask-mode:luminance; mask-repeat:no-repeat; mask-size:contain; mask-position:center;
+}
+.storefront .brand-lockup .brand-wordmark { color:var(--color-gold-soft); }
+.storefront .store-header > .container-x > a { flex-shrink:0; }
+.storefront .store-footer .brand-lockup { margin-bottom:4px; }
+.storefront .store-footer .brand-wordmark { font-size:34px; }
+.admin-brand-row { padding-inline:18px; }
+.admin-brand-row .brand-lockup { gap:9px; }
+.admin-brand-row .brand-symbol { width:38px; height:38px; }
+.admin-brand-row .brand-wordmark { font-size:31px; }
+.admin-brand-row .brand-wordmark span { font-size:5px; letter-spacing:.15em; }
+@media(min-width:1024px) and (max-width:1199px) {
+    .storefront .store-header > .container-x form[role='search'] { display:none; }
+}
+@media(max-width:767px) {
+    .storefront .store-header .brand-lockup { gap:8px; }
+    .storefront .store-header .brand-symbol { width:38px; height:38px; }
+    .storefront .store-header .brand-wordmark { font-size:29px; }
+    .storefront .store-header .brand-wordmark span { font-size:5px; letter-spacing:.14em; }
+}
+@media(max-width:359px) {
+    .storefront .store-header .brand-symbol { width:32px; height:32px; }
+    .storefront .store-header .brand-wordmark { font-size:26px; }
+}
