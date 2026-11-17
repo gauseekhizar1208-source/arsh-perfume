@@ -54,7 +54,7 @@
 .storefront .shop-filters { border-radius:8px; }.shop-filters h2 { font-size:28px; }.shop-filters>label { min-height:44px; }.shop-filters input[type=checkbox] { width:18px; height:18px; }
 @media(max-width:1023px) {
  .help-layout { grid-template-columns:1fr; gap:28px; }.help-sidebar { position:static; }.help-sidebar nav { display:flex; flex-wrap:wrap; gap:6px; padding:14px; }.help-sidebar nav .eyebrow { width:100%; margin:4px 6px 8px; }.help-sidebar nav a { margin:0; padding:10px 12px; border:1px solid var(--color-line); }.help-sidebar nav a span,.help-note { display:none; }
- .contact-layout { gap:32px; }.tracking-layout { grid-template-columns:minmax(0,1fr) 250px; }
+ .contact-layout { gap:32px; }.tracking-layout { grid-template-columns:1fr; gap:28px; }
  .storefront .shop-filters { position:static; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }.shop-filters>h2 { grid-column:1/-1; }.shop-filters>* { margin:0; }
 }
 @media(max-width:640px) {
