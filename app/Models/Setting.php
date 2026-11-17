@@ -25,7 +25,7 @@ class Setting extends Model
     public static function flush(): void
     {
         try {
-            Cache::forget(self::CACHE_KEY);
+            Cache::memo()->forget(self::CACHE_KEY);
         } catch (Throwable) {
             // cache not available yet (e.g. during first migration)
         }
@@ -35,7 +35,9 @@ class Setting extends Model
     protected static function stored(): array
     {
         try {
-            return Cache::rememberForever(self::CACHE_KEY, fn () => static::query()->pluck('value', 'key')->all());
+            // Reuse settings within this request instead of querying the cache
+            // database again for every setting rendered in a Blade template.
+            return Cache::memo()->rememberForever(self::CACHE_KEY, fn () => static::query()->pluck('value', 'key')->all());
         } catch (Throwable) {
             return []; // database not migrated yet: fall back to defaults
         }
