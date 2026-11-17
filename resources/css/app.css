@@ -5,6 +5,7 @@
   @import "./upi.css";
   @import "./auth.css";
   @import "./service-pages.css";
+  @import "./responsive.css";
 
   @source "../views/**/*.blade.php";
   @source "../js/**/*.js";

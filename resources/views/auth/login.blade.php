@@ -18,7 +18,7 @@
             <label class="label" for="password">Password</label>
             <input id="password" name="password" type="password" class="input" required autocomplete="current-password">
         </div>
-        <div class="flex items-center justify-between text-sm">
+        <div class="auth-options flex items-center justify-between text-sm">
             <label class="flex items-center gap-2 text-muted"><input type="checkbox" name="remember" value="1" class="accent-[#C8A24D]"> Remember me</label>
             <a href="{{ route('password.request') }}" class="text-gold hover:underline">Forgot password?</a>
         </div>

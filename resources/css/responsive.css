@@ -1,0 +1,109 @@
+/* Shared sizing rules keep nested grids, forms and long content inside the viewport. */
+.storefront main,
+.storefront main :where(section, article, aside, fieldset),
+.storefront .grid > *,
+.admin-main > *,
+.help-sidebar,
+.help-sidebar nav { min-width:0; }
+.storefront :where(input, select, textarea) { max-width:100%; min-width:0; }
+.storefront :where(h1, h2, h3, p, dd, label, .alert-error, .alert-info) { overflow-wrap:anywhere; }
+.storefront .input { scroll-margin-top:110px; }
+.help-sidebar nav { max-width:100%; }
+.storefront .overflow-x-auto { position:relative; max-width:100%; overscroll-behavior-x:contain; }
+.admin-app .table-x td:has(img) { min-width:220px; }
+.admin-app .table-x td img { flex-shrink:0; }
+.admin-app .table-x td:has(img) .flex > div { min-width:140px; }
+
+@media(max-width:1023px) {
+    .help-layout { grid-template-columns:minmax(0,1fr); }
+    .storefront main nav[aria-label='Account'] a,
+    .storefront main nav[aria-label='Account'] button { min-height:44px; display:flex; align-items:center; }
+    .admin-sidebar { width:min(300px,calc(100vw - 32px)); padding-bottom:env(safe-area-inset-bottom,0px); }
+    .admin-nav { overscroll-behavior:contain; }
+    .admin-nav-link { min-height:46px; font-size:13px; }
+    .admin-app .admin-icon-button { min-width:44px; min-height:44px; }
+}
+
+@media(max-width:767px) {
+    .storefront .container-x { padding-inline:clamp(16px,4vw,24px); }
+    .storefront .store-header .container-x { gap:8px; }
+    .storefront .store-header a[aria-label^='Cart'] { min-height:44px; min-width:44px; display:flex; align-items:center; justify-content:center; }
+    .storefront :where(input.input,select.input,textarea.input) { font-size:16px; }
+    .storefront textarea.input { min-height:140px; }
+    .storefront :where(.btn-gold,.btn-ghost,.btn-outline,.btn-danger) { white-space:normal; text-align:center; line-height:1.5; }
+    .storefront input[type='checkbox'], .storefront input[type='radio'] { width:20px; height:20px; flex-shrink:0; }
+    .storefront label:has(>input[type='checkbox']),
+    .storefront label:has(>input[type='radio']) { min-height:44px; }
+    .storefront main > .container-x { padding-block:32px; }
+    .storefront main .card.p-12 { padding:28px 20px; }
+    .storefront main .card.p-8 { padding:24px 20px; }
+    .storefront .section-title { font-size:clamp(32px,8.5vw,45px); }
+    .storefront nav[aria-label='Breadcrumb'] { line-height:1.9; letter-spacing:.04em; }
+    .storefront footer a { display:inline-flex; align-items:center; min-height:44px; overflow-wrap:anywhere; }
+    .storefront footer { padding-bottom:calc(60px + env(safe-area-inset-bottom,0px)); }
+    .storefront footer > .container-x { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 20px; }
+    .storefront footer > .container-x > :first-child,
+    .storefront footer > .container-x > :last-child { grid-column:1 / -1; }
+    .storefront footer ul { display:grid; gap:4px; }
+    .storefront footer ul > li { margin:0; }
+    .storefront > a[aria-label='Order on WhatsApp'] { right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); width:48px; height:48px; padding:12px; }
+    .storefront .hero-description { font-size:14px; line-height:1.85; }
+    .storefront .product-card h3 { font-size:clamp(21px,5.5vw,26px); }
+    .storefront .product-card .product-info { padding:14px 12px; }
+    .storefront .service-callout .btn-ghost { width:100%; }
+    .storefront .service-prose h2 { font-size:28px; }
+    .storefront .service-prose h3 { font-size:24px; }
+
+    /* Filters wrap without allowing a long select option to dictate page width. */
+    .admin-main form.flex { width:100%; }
+    .admin-main form.flex > div { min-width:0; flex:1 1 140px; max-width:100%; }
+    .admin-main form.flex > .btn-sm { flex:1 1 100%; }
+    .admin-main .input { width:100%; }
+    .admin-main .card { max-width:100%; }
+    .admin-main .card.p-6 { padding:20px 16px; }
+    .admin-app .admin-topbar { min-height:70px; height:auto; padding-block:10px; gap:10px; }
+    .admin-breadcrumb { min-width:0; }
+    .admin-breadcrumb h1 { overflow-wrap:anywhere; font-size:14px; }
+    .admin-topbar-tools { flex-shrink:0; }
+    .admin-app .admin-preview-link { min-height:44px; display:flex; align-items:center; }
+    .admin-app .admin-panel-note,
+    .admin-app .metric-foot,
+    .admin-app .revenue-daily span,
+    .admin-app .admin-empty p { font-size:11px; line-height:1.7; }
+    .admin-app .admin-metric>strong { font-size:clamp(26px,8vw,36px); overflow-wrap:anywhere; }
+    .admin-app .table-x { font-size:12px; }
+    .admin-app .table-x th { font-size:11px; }
+    .admin-app .table-x td { padding:14px; }
+    .admin-app .table-x:has(.admin-empty) { min-width:100%; }
+    .admin-app .table-x .admin-empty { min-width:0; white-space:normal; }
+    .admin-app .admin-empty strong { font-size:26px; overflow-wrap:anywhere; }
+    .admin-app .table-x td a,
+    .admin-app .table-x td button { display:inline-flex; align-items:center; min-height:44px; }
+    .admin-app .revenue-period-summary { flex-wrap:wrap; gap:12px; }
+    .admin-app .admin-footer { flex-wrap:wrap; gap:12px; padding-bottom:calc(20px + env(safe-area-inset-bottom,0px)); }
+}
+
+@media(max-width:639px) {
+    .help-sidebar nav { overflow-x:auto; overscroll-behavior-x:contain; scroll-padding-inline:14px; }
+    .help-sidebar nav a { font-size:13px; }
+    .storefront .shop-filters { grid-template-columns:minmax(0,1fr); }
+    .cart-line { display:grid; grid-template-columns:72px minmax(0,1fr); gap:14px; }
+    .cart-line > a { width:72px; height:86px; }
+    .cart-line > div { min-width:0; }
+    .cart-line-heading { flex-direction:column; gap:8px; }
+    .cart-line .input[type='number'] { width:72px; }
+    .cart-line button { min-height:44px; }
+    .coupon-controls { flex-wrap:wrap; }
+    .coupon-controls .input { flex:1 1 140px; width:0; }
+    .coupon-controls button { flex:0 0 auto; }
+    .storefront .auth-options { align-items:flex-start; flex-wrap:wrap; gap:8px; }
+    .storefront .auth-options > a { min-height:44px; display:flex; align-items:center; }
+    .storefront .hero-copy h1 { font-size:clamp(52px,13vw,72px); }
+}
+
+@media(max-width:359px) {
+    .home-product-grid { grid-template-columns:minmax(0,1fr); }
+    .admin-topbar-tools>.admin-avatar { display:none; }
+    .admin-app .admin-chart-filter { flex-direction:column; align-items:stretch; }
+    .admin-app .admin-chart-filter>div { width:100%; }
+}

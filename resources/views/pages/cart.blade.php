@@ -16,12 +16,12 @@
         <div class="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
             <ul class="divide-y divide-line">
                 @foreach($summary['lines'] as $line)
-                    <li class="flex gap-5 py-6">
+                    <li class="cart-line flex gap-5 py-6">
                         <a href="{{ $line['url'] ?? '#' }}" class="h-28 w-28 shrink-0 overflow-hidden border border-line bg-panel">
                             <img src="{{ $line['image_url'] }}" alt="" class="h-full w-full object-cover" loading="lazy">
                         </a>
                         <div class="flex flex-1 flex-col gap-2">
-                            <div class="flex justify-between gap-4">
+                            <div class="cart-line-heading flex justify-between gap-4">
                                 <div>
                                     <p class="font-display">{{ $line['name'] }}</p>
                                     <p class="text-xs text-muted">{{ $line['variant_name'] }}</p>
@@ -56,7 +56,7 @@
                 <form method="post" action="{{ route('cart.coupon.apply') }}" class="space-y-2">
                     @csrf
                     <label for="coupon" class="label">Coupon code</label>
-                    <div class="flex gap-2">
+                    <div class="coupon-controls flex gap-2">
                         <input id="coupon" name="code" class="input" value="{{ $summary['coupon']?->code }}" placeholder="ENTER CODE" autocomplete="off">
                         <button class="btn-ghost btn-sm">Apply</button>
                     </div>
